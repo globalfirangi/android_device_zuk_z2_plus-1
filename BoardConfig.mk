@@ -61,6 +61,7 @@ TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 TARGET_KERNEL_SOURCE := kernel/zuk/msm8996
+TARGET_KERNEL_APPEND_DTB := true
 TARGET_KERNEL_CONFIG := z2_plus_defconfig
 
 # Webview defs
@@ -106,7 +107,6 @@ BOARD_GLOBAL_CFLAGS += -DBATTERY_REAL_INFO
 
 # Crypto
 TARGET_HW_DISK_ENCRYPTION := true
-TARGET_CRYPTFS_HW_PATH := $(DEVICE_PATH)/cryptfs_hw
 
 # Display
 BOARD_USES_ADRENO := true
@@ -132,11 +132,9 @@ ifeq ($(HOST_OS),linux)
 endif
 WITH_DEXPREOPT_BOOT_IMG_AND_SYSTEM_SERVER_ONLY ?= true
 
-#omni sax
+#QCOM-stuff
 TARGET_USES_QCOM_BSP := true
-TARGET_QCOM_DISPLAY_VARIANT := caf-msm8996
-TARGET_QCOM_AUDIO_VARIANT := caf-msm8996
-TARGET_QCOM_MEDIA_VARIANT := caf-msm8996
+TARGET_USE_SDCLANG := true
 
 # Filesystem
 TARGET_FS_CONFIG_GEN := $(DEVICE_PATH)/config.fs
@@ -192,7 +190,7 @@ PROTOBUF_SUPPORTED := true
 TARGET_RIL_VARIANT := caf
 
 # SELinux
--include device/qcom/sepolicy/sepolicy.mk
+#-include device/qcom/sepolicy/sepolicy.mk
 # BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
 
 # Tap to wake 
